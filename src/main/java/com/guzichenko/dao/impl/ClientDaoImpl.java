@@ -10,10 +10,10 @@ import com.guzichenko.domain.Client;
 
 public class ClientDaoImpl implements ClientDao {
 
-	private static ClientDao clientDao = new ClientDaoImpl();
+	private static ClientDao clientDao = null;
 
 	private Map<Long, Client> map = new HashMap<>();
-	private static long generator = 0;
+	private static long generator = 1;
 
 	private ClientDaoImpl() {
 	}
@@ -28,10 +28,20 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public List<Client> getAllClients() {
+
 		return new ArrayList<>(map.values());
 	}
 
+	@Override
+	public ArrayList<Integer> getAllPhones() {
+		return null;
+	}
+
+
 	public static ClientDao getInstance() {
+		if(clientDao == null){
+			clientDao=new ClientDaoImpl();
+		}
 		return clientDao;
 	}
 

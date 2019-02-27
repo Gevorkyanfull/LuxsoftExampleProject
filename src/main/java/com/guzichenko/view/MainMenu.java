@@ -1,21 +1,24 @@
 package com.guzichenko.view;
 
+import com.guzichenko.Utils.IBufferReader;
+import com.guzichenko.exceptions.BusinessException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class MainMenu {
 
-	private final BufferedReader br;
+	private final IBufferReader br;
 	private final AdminMenu adminMenu;
 	private final ClientMenu clientMenu;
 
-	public MainMenu(BufferedReader br, AdminMenu adminMenu, ClientMenu clientMenu) {
+	public MainMenu(IBufferReader br, AdminMenu adminMenu, ClientMenu clientMenu) {
 		this.br = br;
 		this.adminMenu = adminMenu;
 		this.clientMenu = clientMenu;
 	}
 
-	public void showMenu() throws IOException {
+	public void showMenu() throws IOException, BusinessException {
 		boolean isRunning = true;
 		while (isRunning) {
 
@@ -23,7 +26,7 @@ public class MainMenu {
 			System.out.println("2. Client");
 			System.out.println("0. Exit");
 
-			switch (br.readLine()) {
+			switch (br.readString()) {
 				case "1":
 					adminMenu.show();
 					break;

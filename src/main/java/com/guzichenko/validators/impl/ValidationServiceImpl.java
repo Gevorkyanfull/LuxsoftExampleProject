@@ -1,7 +1,6 @@
 package com.guzichenko.validators.impl;
 
-import com.guzichenko.dao.ClientDao;
-import com.guzichenko.dao.impl.ClientDaoImpl;
+
 import com.guzichenko.exceptions.BusinessException;
 import com.guzichenko.validators.ValidationService;
 
@@ -44,6 +43,13 @@ public class ValidationServiceImpl implements ValidationService {
 	@Override
 	public void validateByPhone(String phone) throws BusinessException {
 
+	}
+
+	@Override
+	public void validatePrice(Long price) throws BusinessException {
+		if(price<0){
+			throw new BusinessException("Price is not valid");
+		}
 	}
 
 

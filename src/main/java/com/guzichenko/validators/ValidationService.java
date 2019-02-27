@@ -10,5 +10,6 @@ public interface ValidationService {
 
 	void validatePhone(String phone) throws BusinessException;
     void validateByPhone(String phone) throws BusinessException;
+    void validatePrice(Long price) throws BusinessException;
 
 }
